@@ -6,6 +6,7 @@ import appFooter from './comps/app-footer.cmp.js'
 
 const options = {
     template: `
+    
         <app-header/>
         <router-view/>
         <app-footer/>

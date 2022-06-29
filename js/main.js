@@ -1,17 +1,17 @@
 // import { router } from "./router.js"
-import  mailApp  from "./apps/mail/views/mail-app.cmp.js"
-// import  keepApp  from "./apps/keep/views/keep-app.cmp.js"
+// import  mailApp  from "./apps/mail/views/mail-app.cmp.js"
+import  noteApp  from "./apps/note/views/note-app.cmp.js"
 
 
 
 const options = {
     template: `
     <!-- <mail-app/> -->
-    <keep-app/>
+    <note-app/>
     `,
     components: {
-        mailApp,
-        // keepApp,
+        // mailApp,
+        noteApp,
     },
 };
 

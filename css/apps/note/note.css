@@ -1,0 +1,68 @@
+.notes-container {
+    background-color: rgb(215, 255, 255);
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr, 1fr, 1fr;
+    gap: 2rem;
+
+
+}
+
+.todoImg {
+    width: 10rem;
+}
+
+.card {
+    border: 1px solid gray;
+    background-color: white;
+    padding: 1rem;
+    width: 15rem;
+}
+
+.add-button {
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    background-color: white;
+    font-size: 70px;
+    color: rgb(138, 94, 183);
+}
+
+.add-container {
+    border: 5px solid gray;
+    position: fixed;
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    z-index: 50;
+}
+
+.save-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: 0;
+    background-color: white;
+    font-size: 20px;
+    color: rgb(138, 94, 183);
+}
+
+.open {
+    display: block;
+}
+
+.close {
+    display: none;
+}
+
+textarea {
+    position: relative;
+    border: 0;
+    margin: .3rem;
+    width: 95%;
+    height: 95%;
+    font-size: 16px;
+    resize: none;
+    
+}

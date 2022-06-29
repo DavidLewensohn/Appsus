@@ -1,23 +1,21 @@
 import { router } from "./router.js"
-import appHeader from './comps/app-header.cmp.js'
-import appFooter from './comps/app-footer.cmp.js'
+import { mailApp } from "./js/apps/mail/views/mail-app.cmp.js"
+import { keepApp } from "./js/apps/keep/views/keep-app.cmp.js"
 
 
 
 const options = {
     template: `
-    
-        <app-header/>
-        <router-view/>
-        <app-footer/>
+    <mail-app/>
+    <keep-app/>
     `,
     components: {
-        appHeader,
-        appFooter,
+        mailApp,
+        keepApp,
     },
 };
 
 
 const app = Vue.createApp(options)
-app.use(router)
+// app.use(router)
 app.mount("#app")

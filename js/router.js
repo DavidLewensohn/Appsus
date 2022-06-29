@@ -17,7 +17,6 @@ const routes = [
     //     path: '/book/:bookId',
     //     component: bookDetails
     // },
-
 ]
 
 export const router = VueRouter.createRouter({

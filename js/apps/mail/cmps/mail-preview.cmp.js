@@ -1,15 +1,18 @@
 export default {
-    props:['mail'],
-    template:`
-        <section class="mail-preview">
-            <p>Subject: {{mail.subject}}</p>
-            <p>Body: {{mail.body}}</p>
-        </section>
+    props: ['mail'],
+    template: `
+        <!-- <section class="mail-preview"> -->
+    <td>{{mail.subject}}</td>
+    <td>{{mail.body}}</td>
+    <td>{{mail.sentAt}}</td>
+    <td>{{mail.from}}</td>
+    
+        <!-- </section> -->
     `,
-    data(){
-        return{}
+    data() {
+        return {}
     },
-    created(){},
-    methods:{},
-    computed:{}
+    created() { },
+    methods: {},
+    computed: {}
 }

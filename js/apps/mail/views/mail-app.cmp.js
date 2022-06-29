@@ -6,8 +6,8 @@ import { mailService } from '../services/mail-service.js';
 
 export default {
     template: `
-        <section v-if="mails" class="app-main">
-            <pre>{{mails}}</pre>
+        <section v-if="mails" class="mail-app">
+    <mail-list :mails="mails"/>
            <!-- <mail-filter @filtered="setFilter" />
            <router-link to="/mail/edit">Add new mail</router-link>
            <mail-list :mails="mailsForDisplay" @remove="removeMail"  /> -->

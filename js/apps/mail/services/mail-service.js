@@ -53,25 +53,25 @@ function save(mail) {
 }
 
 function getEmptyMail() {
-    return { id: '', subject: '', body: '', isRead: false, sentAt: 0, to: '' };
+    return { id: '', subject: '', body: '', isRead: false, sentAt: 0, to: '',from:'' };
 }
 
 function _createMails() {
     let mails = utilService.loadFromStorage(MAILS_KEY);
     if (!mails || !mails.length) {
         mails = [];
-        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', 1551133930594, 'momo@momo.com'));
-        mails.push(_createMail('fg5gg', 'ff', 5435435343453, 'hhh@hhh.com'));
-        mails.push(_createMail('r4444r', 'gg', 8282882828588, 'jjj@jjj.com'));
-        mails.push(_createMail('ghgffgr', 'hhh', 1212858585222, 'ggg@ggg.com'));
-        mails.push(_createMail('ghhghg', 'rrr', 9645353528555, 'fff@ddd.com'));
+        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', 1551133930594, 'momo@momo.com','fff@ddd'));
+        mails.push(_createMail('fg5gg', 'ff', 5435435343453, 'hhh@hhh.com','fff@ddd'));
+        mails.push(_createMail('r4444r', 'gg', 8282882828588, 'jjj@jjj.com','fff@ddd'));
+        mails.push(_createMail('ghgffgr', 'hhh', 1212858585222, 'ggg@ggg.com','fff@ddd'));
+        mails.push(_createMail('ghhghg', 'rrr', 9645353528555, 'ttt@rrr.com','fff@ddd'));
 
         utilService.saveToStorage(MAILS_KEY, mails);
     }
     return mails;
 }
 
-function _createMail(subject, body, sentAt, to) {
+function _createMail(subject, body, sentAt, to,from) {
 
     const mail = {
         id: utilService.makeId(),
@@ -79,7 +79,8 @@ function _createMail(subject, body, sentAt, to) {
         body,
         isRead: false,
         sentAt,
-        to
+        to,
+        from
     };
     return mail;
 }

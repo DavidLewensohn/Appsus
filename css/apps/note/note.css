@@ -48,6 +48,57 @@
     color: rgb(138, 94, 183);
 }
 
+.close-button {
+    position: absolute;
+    bottom: 0;
+    right: 1.5rem;
+    border: 0;
+    background-color: white;
+    font-size: 20px;
+    color: rgb(138, 94, 183);
+}
+
+.img-button img{
+    width: 1rem;
+    color: rgb(138, 94, 183);
+}
+
+.img-button{
+    position: absolute;
+    bottom: 0;
+    right: 3rem;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 20px;
+    color: rgb(138, 94, 183);
+}
+
+.txt-button img{
+    width: 1rem;
+    color: rgb(138, 94, 183);
+}
+
+.txt-button{
+    position: absolute;
+    bottom: 0;
+    right: 4.5rem;
+    border: 0;
+    background-color: white;
+    font-size: 20px;
+    color: rgb(138, 94, 183);
+}
+.bck-button img{
+    width: 1rem;
+    color: rgb(138, 94, 183);
+}
+
+.bck-button{
+    position: absolute;
+    bottom: 0;
+    right: 6rem;
+
+}
+
 .open {
     display: block;
 }
@@ -58,11 +109,20 @@
 
 textarea {
     position: relative;
-    border: 0;
+    border: none;
+    resize: none;
+    outline: none; 
     margin: .3rem;
     width: 95%;
     height: 95%;
     font-size: 16px;
-    resize: none;
-    
+    background-color: #00ffff00;
+}
+
+input[type="color"] {
+	-webkit-appearance: none;
+	border: none;
+	width: 1.5rem;
+	height: 1.5rem;
+    background-color: rgba(21, 122, 211, 0);
 }

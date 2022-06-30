@@ -1,7 +1,7 @@
 import { storageService } from "../../../services/async-storage-service.js"
 export const noteService = {
     getNote,
-    query,
+    createNote,
 }
 const note_KEY = 'noteKey'
 const notes = [{
@@ -16,13 +16,13 @@ const notes = [{
     id: "n102",
     type: "note-img",
     info: {
-        url: 'img/matze-bob-I3GV-lG3st0-unsplash.jpg', 
+        url: 'img/matze-bob-I3GV-lG3st0-unsplash.jpg',
         title: "Bobi and Me",
         style: {
             backgroundColor: "#bbb7fa"
         }
     },
-    
+
 },
 {
     id: "n103",
@@ -39,13 +39,13 @@ const notes = [{
     id: "n104",
     type: "note-img",
     info: {
-        url: 'img/vackground-7K1_uSnNoy4-unsplash.jpg', 
+        url: 'img/vackground-7K1_uSnNoy4-unsplash.jpg',
         title: "Bobi and Me",
         style: {
             backgroundColor: "#d2fab7"
         }
     },
-    
+
 },
 {
     id: "n104",
@@ -69,11 +69,16 @@ const notes = [{
 
 ]
 
-function getNote(){
-    console.log('hi---get-note');
-    return notes
+function getNote() {
+    console.log('hi---get-note')
+    return storageService.query(note_KEY)
 }
 
- function query(){
-    return storageService.query(note_KEY)
- }
+function postNote(note) {
+    console.log(note)
+    return storageService.post(note_KEY, note)
+}
+
+function createNote(type, info) {
+    return postNote ({ type, info })
+}

@@ -1,4 +1,4 @@
-// import mailPreview from './mail-preview.cmp.js'
+import mailPreview from './mail-preview.cmp.js'
 
 export default {
     props: ["mails"],
@@ -7,11 +7,11 @@ export default {
         <table>
 <tr><th>subject</th><th>body</th><th>sentAt</th>
 <th>from</th><th colspan="2">actions</th></tr>
-<tr v-for="mail in mails" :key="mail.id" class="mail-preview">
-    <mail-preview :mail="mail"/>
-    <td class="actions">
-        <button>X</button>
-        <button>Details</button></td>
+<tr v-for="mail in mails"  :key="mail.id" class="mail-preview">
+    <mail-preview v-if="from(mail.from)" :mail="mail"/>
+    <td v-if="from(mail.from)" class="actions">
+        <button  @click="remove(mail.id)">X</button>
+        <button  @click="select(mail)">Details</button></td>
   </tr>
 </table>
 </section>
@@ -28,15 +28,20 @@ export default {
         </section> -->
     `,
     components: {
-        // mailPreview
+        mailPreview
     },
     methods: {
-        // remove(id) {
-        //     this.$emit('remove', id);
-        // },
-        // select(mail) {
-        //     this.$emit('selected', mail);
-        // }
+        remove(mailId) {
+            this.$emit('removed', mailId);
+        },
+        select(mail) {
+            this.$emit('selected', mail);
+        },
+        from(from){
+if(from==='') return false
+else return true
+        }
+       
     },
     computed: {}
 }

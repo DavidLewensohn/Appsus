@@ -17,6 +17,7 @@ const criteria = {
 }
 
 const MAILS_KEY = 'mails';
+// const MAILS_TO_KEY = 'toSend'
 _createMails();
 
 export const mailService = {
@@ -42,6 +43,7 @@ function get(mailId) {
 }
 
 function save(mail) {
+// if(mail.to!='')code=MAILS_TO_KEY
     if (mail.id) return storageService.put(MAILS_KEY, mail)
     else return storageService.post(MAILS_KEY, mail)
 
@@ -60,11 +62,11 @@ function _createMails() {
     let mails = utilService.loadFromStorage(MAILS_KEY);
     if (!mails || !mails.length) {
         mails = [];
-        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', 1551133930594, 'momo@momo.com','fff@ddd'));
-        mails.push(_createMail('fg5gg', 'ff', 5435435343453, 'hhh@hhh.com','fff@ddd'));
-        mails.push(_createMail('r4444r', 'gg', 8282882828588, 'jjj@jjj.com','fff@ddd'));
-        mails.push(_createMail('ghgffgr', 'hhh', 1212858585222, 'ggg@ggg.com','fff@ddd'));
-        mails.push(_createMail('ghhghg', 'rrr', 9645353528555, 'ttt@rrr.com','fff@ddd'));
+        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', 1551133930594, '','fff@ddd'));
+        mails.push(_createMail('fg5gg', 'ff', 5435435343453, '','fff@ddd'));
+        mails.push(_createMail('r4444r', 'gg', 8282882828588, '','fff@ddd'));
+        mails.push(_createMail('ghgffgr', 'hhh', 1212858585222, '','fff@ddd'));
+        mails.push(_createMail('ghhghg', 'rrr', 9645353528555, '','fff@ddd'));
 
         utilService.saveToStorage(MAILS_KEY, mails);
     }

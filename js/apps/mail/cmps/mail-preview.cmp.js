@@ -1,7 +1,8 @@
 export default {
     props: ['mail'],
-    template: `
+    template: ` 
         <!-- <section class="mail-preview"> -->
+
     <td>{{mail.subject}}</td>
     <td>{{mail.body}}</td>
     <td>{{mail.sentAt}}</td>
@@ -10,9 +11,14 @@ export default {
         <!-- </section> -->
     `,
     data() {
-        return {}
+        return {
+           
+        }
     },
     created() { },
-    methods: {},
+    methods: {
+
+
+    },
     computed: {}
 }

@@ -28,9 +28,11 @@ methods: {
     save(){
         if(!this.mailToCompose.body||!this.mailToCompose.to) return
     //    const mail =
-       mailService.save(this.mailToCompose)
-        // this.$emit("saved",mail)
-    }
+       mailService.save(this.mailToCompose).then(mail => {
+        this.$emit("saved",mail);
+    })
+    this.mailToCompose=mailService.getEmptyMail()
+}
 },
 computed: {},
 unmounted() {},

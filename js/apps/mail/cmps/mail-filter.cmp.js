@@ -1,9 +1,12 @@
 export default {
     template: `
         <section class="mail-filter">
+            <h1>Filter:</h1>
             <label>
-            Search
-            <input ref="vendorInput" @input="setFilter" type="text" v-model="filterBy.vendor" placeholder="Search...">
+            By Search:
+            <input @input="filter" type="text" v-model="filterBy.subject" placeholder="Search...">
+            By Unread:
+            <button v-on:click="filterRead()">Show Unread</button>
             </label>
         </section>
     `,
@@ -11,7 +14,7 @@ export default {
         return {
             filterBy: {
                 subject: '',
-                body: ''
+                isRead: null,
             }
         };
     },
@@ -20,11 +23,17 @@ export default {
     },
     mounted() {
         
-        this.$refs.vendorInput.focus()
+        // this.$refs.vendorInput.focus()
     },
     methods: {
-        setFilter() {
-            this.$emit('filtered', { ...this.filterBy });
-        }
+        filterRead(){
+            this.filterBy.isRead=true
+            this.$emit('filtered',this.filterBy );
+        },
+        filter() {
+            // console.log(this.isRead);
+            this.$emit('filtered',this.filterBy );
+        },
+        
     }
 }

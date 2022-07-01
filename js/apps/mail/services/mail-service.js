@@ -55,18 +55,18 @@ function save(mail) {
 }
 
 function getEmptyMail() {
-    return { id: '', subject: '', body: '', isRead: false, sentAt: 0, to: '',from:'' };
+    return { id: '', subject: '', body: '', isRead: false, sentAt: new Date (), to: '',from:'' };
 }
 
 function _createMails() {
     let mails = utilService.loadFromStorage(MAILS_KEY);
     if (!mails || !mails.length) {
         mails = [];
-        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', 1551133930594, '','fff@ddd'));
-        mails.push(_createMail('fg5gg', 'ff', 5435435343453, '','fff@ddd'));
-        mails.push(_createMail('r4444r', 'gg', 8282882828588, '','fff@ddd'));
-        mails.push(_createMail('ghgffgr', 'hhh', 1212858585222, '','fff@ddd'));
-        mails.push(_createMail('ghhghg', 'rrr', 9645353528555, '','fff@ddd'));
+        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', new Date (2018, 13, 24, 10, 47), '','ronaldo@GOAT'));
+        mails.push(_createMail('Payment', 'Would love to catch up sometimes', new Date   (2012, 5, 9, 4, 23), '','stef@ddd'));
+        mails.push(_createMail('Incurance', 'Would love to catch up sometimes', new Date (2022, 0, 2, 9, 45), '','lebron@ddd'));
+        mails.push(_createMail('Invitation', 'Would love to catch up sometimes', new Date(2010, 11, 15, 12, 33), '','messi@ddd'));
+        mails.push(_createMail('Football', 'Would love to catch up sometimes', new Date  (2016, 9, 12, 19, 12), '','zlatan@ddd'));
 
         utilService.saveToStorage(MAILS_KEY, mails);
     }

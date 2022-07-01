@@ -3,19 +3,22 @@ import mailPreview from "../cmps/mail-preview.cmp.js";
 import mailDetails from "./mail-details.cmp.js";
 import mailCompose from "./mail-compose.js";
 import { mailService } from '../services/mail-service.js';
+import mailFilter from "../cmps/mail-filter.cmp.js";
 // import mailFilter from '../cmps/mail-filter.cmp.js';
 // import mailList from '../cmps/mail-list.cmp.js';
 // import { eventBus } from '../services/eventBus-service.js';
 
 export default {
     template: `
-    <section> 
-    <button>Inbox</button>
-    <button >Sent</button>
+    <section>    
+    <button v-on:click="showFrom()">Inbox</button>
+    <button v-on:click="showTo()">Sent</button>
     </section>
-        <section v-if="mails" class="mail-app">
-    <mail-list  @removed="removeMail" @selected="selectMail" :mails="mails"/>
-    <mail-compose v-if="composer"  @close="composer=null" :composer="composer"/>
+        <section v-if="mails" class="mail-app"> 
+           <mail-filter @filtered="filterMail"/>
+    <mail-list v-if="fromShow" @removed="removeMail" @selected="selectMail" :mails="mailsForDisplay" :fromShow="fromShow"/>
+    <mail-list v-if="toShow" @removed="removeMail" @selected="selectMail" :mails="mailsForDisplay" :toShow="toShow"/>
+    <mail-compose @saved="saveMail" v-if="composer"  @close="composer=null;isHidden=false" :composer="composer"/>
     <!-- @saved="saveMail" -->
     <mail-details  v-if="selectedMail" @close="selectedMail=null" :mail="selectedMail"/>
            <!-- <mail-filter @filtered="setFilter" />
@@ -23,7 +26,7 @@ export default {
            <mail-list :mails="mailsForDisplay" @remove="removeMail"  /> -->
            <!-- <mail-list/>
            <mail-preview/> -->
-           <button  @click="compose">Compose</button>
+           <button v-if="!isHidden" v-on:click="isHidden=true" @click="compose">Compose</button>
         </section>
     `,
     components: {
@@ -31,6 +34,8 @@ export default {
         mailPreview,
         mailDetails,
         mailCompose,
+        mailFilter,
+
 
         // mailFilter,
         // mailList,
@@ -39,14 +44,25 @@ export default {
         return {
             mails: null,
             selectedMail: null,
-            composer:null,
-            // filterBy: null
+            composer: null,
+            filterBy: null,
+            fromShow: true,
+            toShow: false,
+            isHidden: false,
         };
     },
     created() {
         mailService.query().then(mails => this.mails = mails)
     },
     methods: {
+        showFrom() {
+            this.fromShow = true
+            this.toShow = false
+        },
+        showTo() {
+            this.fromShow = false
+            this.toShow = true
+        },
         removeMail(mailId) {
             console.log('Deleted successfully');
             mailService.remove(mailId).then(() => {
@@ -59,25 +75,28 @@ export default {
             // eventBus.emit('show-msg', { txt: 'Error - try again later', type: 'error' });
             // })
         },
-        // setFilter(filterBy) {
-        //     this.filterBy = filterBy;
-        // }
+        filterMail(filterBy) {
+            this.filterBy = filterBy;
+        },
         compose() {
-           this.composer = 1
+            this.composer = 1
         },
         selectMail(mail) {
             this.selectedMail = mail
         },
-        // saveMail(mail){
-        //     this.mails.push(mail)
-        // }
+        saveMail(mail){
+            this.mails.push(mail)
+        }
     },
     computed: {
-        // mailsForDisplay() {
-        //     if (!this.filterBy) return this.mails;
-        //     const regex = new RegExp(this.filterBy.vendor, 'i');
-        //     return this.mails.filter(mail => regex.test(mail.vendor));
-        // }
+        mailsForDisplay() {
+            if (!this.filterBy) return this.mails;
+            console.log(this.filterBy);
+            if(this.filterBy.isRead===true) return this.mails.filter(mail =>mail.isRead===true)
+            const regex = new RegExp(this.filterBy.subject, 'i');
+            return this.mails.filter(mail => regex.test(mail.subject))
+            
+        }
     },
 
 };

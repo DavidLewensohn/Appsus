@@ -1,4 +1,4 @@
-import { mailService } from "../services/mail-service.js";
+// import { mailService } from "../services/mail-service.js";
 
 export default {
     props:['mail'],
@@ -8,7 +8,7 @@ export default {
             <p>Subject: {{mail.subject}}</p>
             <p>Body: {{mail.body}}</p>
             <button @click="$emit('close')">Back</button>
-        </section>
+        </section> 
     `,
     data() {
         return {

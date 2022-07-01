@@ -1,7 +1,7 @@
 export const noteTxt = {
     props:['info'],
     template: `
-    <section class="card note-txt-container">
+    <section >
         <h2>{{info.txt}}</h2>
 
     </section>

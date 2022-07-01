@@ -126,3 +126,13 @@ input[type="color"] {
 	height: 1.5rem;
     background-color: rgba(21, 122, 211, 0);
 }
+
+.edit-modal{
+    border: 5px solid gray;
+    position: fixed;
+    width: 50%;
+    height: 50%;
+    transform: translate(50% ,50%);
+    background-color: white;
+    z-index: 50;
+}

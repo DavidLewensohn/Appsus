@@ -4,18 +4,26 @@ import { noteTxt } from "../cmps/note-txt.cmp.js"
 import { noteTodos } from "../cmps/note-todos.cmp.js"
 import { noteVideo } from "../cmps/note-video.cmp.js"
 import { noteImg } from "../cmps/note-img.cmp.js"
+import {noteEdit} from "../cmps/note-edit.cmp.js"
+
 
 export const notePreview = {
     template: `
     <section class="notes-container">
-        <component :is="note.type"  :info="note.info"  v-for="note in notes"/>
+        <div class="card note-container"  v-for="note in notes" @click="editNote(note.id)" >
+            <component :is="note.type"  :info="note.info" />
+        </div>
+        <note-edit :editNote="sentNote"/>
+        
     </section>
     
 `,
     data() {
         return {
-            notes: noteService.getNote().then(note => this.notes = note),
+            notes: noteService.getNotes()
+                .then(notes => this.notes = notes),
             newNote: null,
+            sentNote: null,
         };
     },
     created() {
@@ -24,6 +32,11 @@ export const notePreview = {
     methods: {
         addNote(note){
             note.then(note=>this.notes.push(note))
+        },
+        editNote(id){
+            console.log(id)
+            noteService.getNote(id).then(note =>  this.sentNote = note)
+            console.log(this.sentNote);
         }
     },
     computed: {},
@@ -33,5 +46,7 @@ export const notePreview = {
         noteTodos,
         noteVideo,
         noteImg,
+        noteEdit,
+
     }
 };

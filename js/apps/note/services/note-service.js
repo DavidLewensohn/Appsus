@@ -1,7 +1,8 @@
 import { storageService } from "../../../services/async-storage-service.js"
 export const noteService = {
-    getNote,
+    getNotes,
     createNote,
+    getNote,
 }
 const note_KEY = 'noteKey'
 const notes = [{
@@ -69,7 +70,12 @@ const notes = [{
 
 ]
 
-function getNote() {
+function getNote(id){
+    console.log(id);
+    return storageService.get(note_KEY, id)
+}
+
+function getNotes() {
     console.log('hi---get-note')
     return storageService.query(note_KEY)
 }

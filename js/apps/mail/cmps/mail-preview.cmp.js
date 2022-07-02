@@ -6,9 +6,10 @@ export default {
     <td>{{mail.subject}}</td>
     <td>{{mail.body}}</td>
     <td>{{mail.sentAt}}</td>
-    <td>{{mail.from}}</td>
-    <td>{{mail.to}}</td>
-    <td>{{mail.isRead}}</td>
+    <td v-if:="mail.from">{{mail.from}}</td>
+    <td v-if:="mail.to">{{mail.to}}</td>
+    <td v-if:="mail.isRead">yes</td>
+    <td v-else class="noRead">no</td>
     
         <!-- </section> -->
     `,

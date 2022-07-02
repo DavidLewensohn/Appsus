@@ -10,14 +10,18 @@ import mailFilter from "../cmps/mail-filter.cmp.js";
 
 export default {
     template: `
-    <section>    
+    
+        <section v-if="mails" class="mail-app"> 
+           <mail-filter @filtered="filterMail"/>
+          <div class="inbox-sent-compose-list">
+             <section class="inbox-sent-compose"> 
+    <button v-if="!isHidden" v-on:click="isHidden=true" @click="compose">Compose an Email</button>   
     <button v-on:click="showFrom()">Inbox</button>
     <button v-on:click="showTo()">Sent</button>
     </section>
-        <section v-if="mails" class="mail-app"> 
-           <mail-filter @filtered="filterMail"/>
     <mail-list v-if="fromShow" @removed="removeMail" @selected="selectMail" :mails="mailsForDisplay" :fromShow="fromShow"/>
     <mail-list v-if="toShow" @removed="removeMail" @selected="selectMail" :mails="mailsForDisplay" :toShow="toShow"/>
+    </div>
     <mail-compose @saved="saveMail" v-if="composer"  @close="composer=null;isHidden=false" :composer="composer"/>
     <!-- @saved="saveMail" -->
     <mail-details  v-if="selectedMail" @close="selectedMail=null" :mail="selectedMail"/>
@@ -26,7 +30,7 @@ export default {
            <mail-list :mails="mailsForDisplay" @remove="removeMail"  /> -->
            <!-- <mail-list/>
            <mail-preview/> -->
-           <button v-if="!isHidden" v-on:click="isHidden=true" @click="compose">Compose</button>
+           
         </section>
     `,
     components: {
@@ -92,7 +96,7 @@ export default {
         mailsForDisplay() {
             if (!this.filterBy) return this.mails;
             console.log(this.filterBy);
-            if(this.filterBy.isRead===true) return this.mails.filter(mail =>mail.isRead===true)
+            if(this.filterBy.isRead===true) return this.mails.filter(mail =>mail.isRead===false)
             const regex = new RegExp(this.filterBy.subject, 'i');
             return this.mails.filter(mail => regex.test(mail.subject))
             

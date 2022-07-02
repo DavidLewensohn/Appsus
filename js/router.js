@@ -1,22 +1,16 @@
-
+import mailApp from "../js/apps/mail/views/mail-app.cmp.js"
+import noteApp from "../js/apps/note/views/note-app.cmp.js"
 
 const routes = [
-    // {
-    //     path: '/',
-    //     component: homePage
-    // },
-    // {
-    //     path: '/about',
-    //     component: aboutPage
-    // },
-    // {
-    //     path: '/book',
-    //     component: bookApp
-    // },
-    // {
-    //     path: '/book/:bookId',
-    //     component: bookDetails
-    // },
+
+    {
+        path: '/mail',
+        component: mailApp
+    },
+    {
+        path: '/note',
+        component: noteApp
+    },
 ]
 
 export const router = VueRouter.createRouter({

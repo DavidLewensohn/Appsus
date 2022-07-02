@@ -48,6 +48,7 @@ function put(entityType, updatedEntity) {
             const idx = entities.findIndex(entity => entity.id === updatedEntity.id);
             entities.splice(idx, 1, updatedEntity)
             _save(entityType, entities)
+            console.log(entityType, entities)
             return updatedEntity;
         })
 }
@@ -63,6 +64,7 @@ function remove(entityType, entityId) {
 
 //save to local storage
 function _save(entityType, entities) {
+    console.log('saving:', entities)
     localStorage.setItem(entityType, JSON.stringify(entities))
 }
 

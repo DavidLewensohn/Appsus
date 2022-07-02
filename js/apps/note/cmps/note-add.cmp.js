@@ -1,7 +1,7 @@
 import { noteService } from "../services/note-service.js"
-import { eventBus } from "../../../services/event-bus.js"
 
 export default {
+    
     template: `
     <button class="add-button" @click="openNewNote">+</button>
 
@@ -42,7 +42,7 @@ export default {
             if (!txt) return
             if (noteType === "note-txt") note = noteService.createNote(noteType, { txt })
             if (noteType === "note-img") note = noteService.createNote(noteType, { url, title:txt, style: {backgroundColor}})
-            eventBus.emit('newNote', note)
+            this.$emit('newNote', note)
         },
         openNewNote() {
             this.isAddTubOpen = !this.isAddTubOpen

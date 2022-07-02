@@ -2,7 +2,7 @@ export const noteTxt = {
     props:['info'],
     template: `
     <section >
-        <h2>{{info.txt}}</h2>
+        <p class="txt-card">{{info.txt}}</p>
 
     </section>
 `,

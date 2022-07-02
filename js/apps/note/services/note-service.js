@@ -3,7 +3,14 @@ export const noteService = {
     getNotes,
     createNote,
     getNote,
+    updateNote,
 }
+
+function _save(entityType, entities) {
+    console.log('saving:', entities)
+    localStorage.setItem(entityType, JSON.stringify(entities))
+}
+
 const note_KEY = 'noteKey'
 const notes = [{
     id: "n101",
@@ -49,7 +56,7 @@ const notes = [{
 
 },
 {
-    id: "n104",
+    id: "n105",
     type: "note-txt",
     isPinned: true,
     info: {
@@ -57,7 +64,7 @@ const notes = [{
     }
 },
 {
-    id: "n105",
+    id: "n106",
     type: "note-todos",
     info: {
         label: "Get my stuff together",
@@ -69,6 +76,12 @@ const notes = [{
 },
 
 ]
+// _save(note_KEY, notes)
+
+function updateNote(note){
+    console.log('update', note);
+    return storageService.put(note_KEY, note)
+}
 
 function getNote(id){
     console.log(id);
@@ -78,6 +91,7 @@ function getNote(id){
 function getNotes() {
     console.log('hi---get-note')
     return storageService.query(note_KEY)
+
 }
 
 function postNote(note) {

@@ -55,18 +55,18 @@ function save(mail) {
 }
 
 function getEmptyMail() {
-    return { id: '', subject: '', body: '', isRead: false, sentAt: new Date (), to: '',from:'' };
+    return { id: '', subject: '', body: '', isRead: false, sentAt: new Date ().toLocaleString(), to: '',from:'' };
 }
 
 function _createMails() {
     let mails = utilService.loadFromStorage(MAILS_KEY);
     if (!mails || !mails.length) {
         mails = [];
-        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', new Date (2018, 13, 24, 10, 47), '','ronaldo@GOAT'));
-        mails.push(_createMail('Payment', 'Would love to catch up sometimes', new Date   (2012, 5, 9, 4, 23), '','stef@ddd'));
-        mails.push(_createMail('Incurance', 'Would love to catch up sometimes', new Date (2022, 0, 2, 9, 45), '','lebron@ddd'));
-        mails.push(_createMail('Invitation', 'Would love to catch up sometimes', new Date(2010, 11, 15, 12, 33), '','messi@ddd'));
-        mails.push(_createMail('Football', 'Would love to catch up sometimes', new Date  (2016, 9, 12, 19, 12), '','zlatan@ddd'));
+        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', new Date (2018, 5, 6, 10, 47).toLocaleString(), '','ronaldo@GOAT'));
+        mails.push(_createMail('Payment', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec odio varius, scelerisque neque fringilla, ullamcorper urna. Maecenas velit risus, malesuada vel pellentesque ac, mattis blandit justo. Pellentesque ut turpis metus. Sed egestas imperdiet orci, et pellentesque urna sodales quis. Pellentesque in justo posuere, posuere ante a, lacinia arcu. Sed laoreet elit ut aliquam auctor. Pellentesque non orci felis. Sed gravida erat a risus scelerisque vestibulum in porttitor eros. Maecenas commodo ut tellus vel luctus. Proin condimentum malesuada mi, vel commodo metus molestie quis. In tincidunt tellus nec felis pellentesque malesuada. Ut non dolor ut metus finibus auctor. Proin non mauris a quam pharetra pellentesque sit amet non justo. Suspendisse non iaculis quam. Proin ultricies placerat nisi nec fringilla.', new Date(2012, 5, 9, 4, 23).toLocaleString(), '','stef@ddd'));
+        mails.push(_createMail('Incurance', 'consectetur adipiscing elit. Nunc nec odio varius, scelerisque neque fringilla, ullamcorper urna. Maecenas velit risus, malesuada vel pellentesque ac, mattis blandit justo. Pellentesque ut turpis metus. Sed egestas i', new Date (2022, 0, 2, 9, 45).toLocaleString(), '','lebron@ddd'));
+        mails.push(_createMail('Invitation', 'Sed laoreet elit ut aliquam auctor. Pellentesque non orci felis. Sed gravida erat a risus scelerisque vestibulum in porttitor eros. Maecenas commodo ut tellus vel luctus.', new Date(2010, 11, 15, 12, 33).toLocaleString(), '','messi@ddd'));
+        mails.push(_createMail('Football', 'In tincidunt tellus nec felis pellentesque malesuada. Ut non dolor ut metus finibus auctor. Proin non mauris a quam pharetra pellentesque sit amet non justo.', new Date  (2016, 9, 12, 19, 12).toLocaleString(), '','zlatan@ddd'));
 
         utilService.saveToStorage(MAILS_KEY, mails);
     }

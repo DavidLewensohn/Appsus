@@ -8,6 +8,7 @@ export default {
         <label>
         <button class="filter-button" v-on:click="filterRead()">Show unread mails</button>
         </label>
+        <button class="sort-button" v-on:click="sort()">Sort by date</button>
     </section>
     `,
     data() {
@@ -26,6 +27,11 @@ export default {
         // this.$refs.vendorInput.focus()
     },
     methods: {
+        sort(){
+            console.log('hi1');
+            this.$emit('sorted');
+        },
+
         filterRead(){
             this.filterBy.isRead=true
             this.$emit('filtered',this.filterBy );

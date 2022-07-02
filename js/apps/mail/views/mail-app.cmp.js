@@ -12,19 +12,21 @@ export default {
     template: `
     
         <section v-if="mails" class="mail-app"> 
-           <mail-filter @filtered="filterMail"/>
+           <mail-filter @sorted="sortMail" @filtered="filterMail"/>
           <div class="inbox-sent-compose-list">
              <section class="inbox-sent-compose"> 
-    <button v-if="!isHidden" v-on:click="isHidden=true" @click="compose">Compose an Email</button>   
+    <button  @click="compose">Compose an Email</button>
+    <!-- v-if="!isHidden" v-on:click="isHidden=true"    -->
     <button v-on:click="showFrom()">Inbox</button>
     <button v-on:click="showTo()">Sent</button>
     </section>
     <mail-list v-if="fromShow" @removed="removeMail" @selected="selectMail" :mails="mailsForDisplay" :fromShow="fromShow"/>
     <mail-list v-if="toShow" @removed="removeMail" @selected="selectMail" :mails="mailsForDisplay" :toShow="toShow"/>
     </div>
+    <div class="compose-details">
     <mail-compose @saved="saveMail" v-if="composer"  @close="composer=null;isHidden=false" :composer="composer"/>
     <!-- @saved="saveMail" -->
-    <mail-details  v-if="selectedMail" @close="selectedMail=null" :mail="selectedMail"/>
+    <mail-details  v-if="selectedMail" @close="selectedMail=null" :mail="selectedMail"/></div>
            <!-- <mail-filter @filtered="setFilter" />
            <router-link to="/mail/edit">Add new mail</router-link>
            <mail-list :mails="mailsForDisplay" @remove="removeMail"  /> -->
@@ -59,6 +61,12 @@ export default {
         mailService.query().then(mails => this.mails = mails)
     },
     methods: {
+        sortMail() {
+            this.mails.sort(function(a,b){
+                return new Date(b.sentAt) - new Date(a.sentAt);
+              });
+        },
+
         showFrom() {
             this.fromShow = true
             this.toShow = false
@@ -88,7 +96,7 @@ export default {
         selectMail(mail) {
             this.selectedMail = mail
         },
-        saveMail(mail){
+        saveMail(mail) {
             this.mails.push(mail)
         }
     },
@@ -96,10 +104,10 @@ export default {
         mailsForDisplay() {
             if (!this.filterBy) return this.mails;
             console.log(this.filterBy);
-            if(this.filterBy.isRead===true) return this.mails.filter(mail =>mail.isRead===false)
+            if (this.filterBy.isRead === true) return this.mails.filter(mail => mail.isRead === false)
             const regex = new RegExp(this.filterBy.subject, 'i');
             return this.mails.filter(mail => regex.test(mail.subject))
-            
+
         }
     },
 

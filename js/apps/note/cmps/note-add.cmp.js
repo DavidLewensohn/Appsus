@@ -8,13 +8,17 @@ export default {
     <div class="add-container" :class="ifOpen">
         <textarea v-model="text" :placeholder="placeholder"
             :style="getColor">{{text}}</textarea>
+        <textarea v-model="todos" placeholder="Enter todos:"
+            :style="getColor" v-if="noteType ==='note-todos'">{{todos}}</textarea>
         <input type="text" class="img-input" placeholder="Enter Image Url" 
             @input="imgUrl" v-if="noteType ==='note-img'">
         <button class="save-button" @click="createNote" >✔</button>
         <button class="close-button" @click="closeNewNote" >✘</button>
         <button class="img-button" @click="imgType" ><img src="img/image.png" alt=""></button>
         <button class="txt-button" @click="txtType" ><img src="img/text.png" alt=""></button>
-        <input type="color" value="white" class="bck-button" @input="setBeckColor" >
+        <button class="txt-button" @click="totosType" > ≔</button>
+
+        <input type="color" value="#fffc8e" class="bck-button" @input="setBeckColor" >
         
     </div>
 
@@ -24,7 +28,8 @@ export default {
             text: '',
             noteType: "note-txt",
             isAddTubOpen: false,
-            beckColor: 'white',
+            beckColor: '#fffc8e',
+            todos:null,
 
         };
     },
@@ -36,12 +41,18 @@ export default {
             var url = this.imgUrl
             var backgroundColor = this.beckColor
             var note
+            if (noteType==='note-todos'){
+                var lines = this.todos.split("\n")
+                console.log(lines)
+            }
+
 
 
             this.isAddTubOpen = false
             if (!txt) return
             if (noteType === "note-txt") note = noteService.createNote(noteType, { txt })
             if (noteType === "note-img") note = noteService.createNote(noteType, { url, title:txt, style: {backgroundColor}})
+            if (noteType === "note-todos") note = noteService.createNote(noteType, { label: txt, style: { backgroundColor }, todos: [{ txt: lines[0] }, { txt: lines[1] }] })
             this.$emit('newNote', note)
         },
         openNewNote() {
@@ -49,13 +60,18 @@ export default {
         },
         closeNewNote() {
             this.isAddTubOpen = false
+            this.beckColor= '#fffc8e'
             this.noteType = null
+            this.text = ''
         },
         imgType() {
             this.noteType = 'note-img'
         },
         txtType() {
             this.noteType = 'note-txt'
+        },
+        totosType(){
+            this.noteType = 'note-todos'
         },
         imgUrl(e){
             this.imgUrl = e.target.value

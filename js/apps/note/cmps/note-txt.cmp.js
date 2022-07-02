@@ -1,7 +1,7 @@
 export const noteTxt = {
     props:['info'],
     template: `
-    <section >
+    <section :style="info.style" value="#fffc8e" class="txt-container">
         <p class="txt-card">{{info.txt}}</p>
 
     </section>
@@ -9,7 +9,9 @@ export const noteTxt = {
     data() {
         return {};
     },
-    created() { },
+    created() { 
+        console.log(this.info);
+    },
     methods: {},
     computed: {},
     unmounted() { },

@@ -9,10 +9,13 @@ import { noteImg } from "../cmps/note-img.cmp.js"
 export const notePreview = {
     props:['notes'],
     template: `
-    <section class="notes-container">
-        <div class="card note-container"  v-for="note in notes" @click="editNote(note.id)" >
-            <component :is="note.type"  :info="note.info" />
+    <section class="main-notes-container">
+        <div class="notes-container">
+            <div class="card note-container"  v-for="note in notes" @click="editNote(note.id)" >
+                <component :is="note.type"  :info="note.info" />
+            </div>
         </div>
+
         
     </section>
     

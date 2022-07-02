@@ -7,7 +7,8 @@ import noteAdd from "../cmps/note-add.cmp.js"
 export default {
     template: `
         <note-add @newNote="addNote"/>
-        <note-edit v-if="sentNote" :editedNote="sentNote" @editNote="updateNote"/>
+        <note-edit v-if="sentNote" :editedNote="sentNote" 
+        @editNote="updateNote" @deleteNote="deleteNote"/>
         <note-preview v-if="notes" :notes="notes" @currId="findEditNote"/>
     `,
     data() {
@@ -58,6 +59,18 @@ export default {
                 this.openEditTab = true
                 console.log('sent to edit:',this.sentNote)
             })
+        },
+        deleteNote(note){
+            console.log(note);
+            console.log(this.notes)
+            var id = note.id
+            console.log(note, id);
+            var a = noteService.removeNote(note.id)
+            console.log(a);
+            let idx = this.notes.findIndex(note=>note.id===id)
+            console.log('hi',idx);
+            this.notes.splice(idx, 1)
+            console.log(this.notes)
         }
     },
     computed: {},

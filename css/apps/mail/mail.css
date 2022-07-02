@@ -6,26 +6,27 @@
 .mail-app {
     display: flex;
     flex-direction: column;
+    background: rgb(237, 237, 199);
+    height: 80vh;
 }
 
 
 .mail-filter {
     display: flex;
-    background-color: rgb(254, 201, 11);
+    background-color: rgb(252, 187, 97);
     /* margin-left: 40%; */
     justify-content: center;
-    margin-top: 7em;
+    margin-top: 0em;
     width: 100%;
-    height: 4em;
+    height: 60px;
 }
 
 .h {
+    display: flex;
+    align-items: center;
     color: rgb(17, 7, 3);
-    position: fixed;
-    left: 0;
-    margin-left: 1.5em;
-    margin-top: 0.7em;
     font-size: 1.5em;
+    margin-right:0.7em ;
 }
 
 label {
@@ -44,10 +45,11 @@ label input {
 }
 
 .filter-button {
-    height: 2em;
+    height: 3em;
     background: rgb(249, 240, 148);
     border-style: none;
     border-radius: 2em;
+    
     /* border-color: rgb(174, 158, 20); */
 }
 
@@ -56,7 +58,18 @@ label input {
     background: rgb(255, 235, 19);
 }
 
-
+.sort-button{
+    height: 3em;
+    margin-top: .8em;
+    border: none;
+    border-radius: 2em;
+    background: rgb(249, 240, 148);
+    margin-bottom:1em ;
+}
+.sort-button:hover{
+    cursor: pointer;
+    background: rgb(255, 235, 19);
+}
 
 .inbox-sent-compose-list {
     display: flex;
@@ -99,6 +112,7 @@ label input {
     margin-top: 0.5em;
     /* margin-bottom: 2.5em; */
     margin-left: 2em;
+    
 }
 
 th {
@@ -138,43 +152,158 @@ td {
 .actions img {
     height: 2em;
 }
+
+.actions img:hover{
+    cursor: pointer;
+}
 /* .tr-bold{
     font-weight:lighter;
 } */
 .mail-compose{
     display:flex ;
     flex-direction: column;
-    height: 300px;
-    width: 37em;
+    position: absolute;
+    bottom: 4em;
+    height: 400px;
+    width: 42em;
     padding: 1em;
-    margin-bottom: 1em;
+    margin: 1em;
+     
+}
+.compose-close button{
+border: none;
+background: rgb(39, 37, 37);
+color: #f3f2f2;
+border-radius: 30px;
+}
+.compose-close button:hover{
+    cursor: pointer;
+}
+.compose-close h1{
+margin-top: 0.4em;
+margin-left: 0.7em;
+font-size: 1.5em;
 
 }
 .compose-close{
     display:flex ;
     justify-content: space-between;
-    height: 30px;
+    height: 45px;
+    background-color: rgb(25, 23, 23);
+    color: #f3f2f2;
+    border-radius: 20px 20px 0px 0px;
+    
 }
 .inputs-send{
     display:flex ;
     flex-direction: column; 
+    background-color: #fff;
     
 }
 .body-send{
-    display:flex ; 
+    display:flex ;
+    border-style: groove;
+    background: rgb(255, 255, 255);
 }
 .input-to{
     height: 33px;
+    border: none;
+    border-bottom: 1px solid rgb(106, 103, 103);
+    
 }
 .input-subject{
     height: 33px;
+    border: none;
+    border-bottom: 1px solid rgb(106, 103, 103);
 }
 .body-send{
     justify-content: space-between;
     height: 200px;
+    border: none;
+    /* border-bottom: 1px solid rgb(106, 103, 103); */
 }
-.input-body{
+textarea{
     width: 100%;
+    border: none;
+    margin-left:0.9em ;
     
 }
-  
+
+.body-send button{
+    height: 3em;
+    margin-top: 11.4em;
+    border: none;
+    background-color: rgb(255, 223, 79);
+    border-radius: 30px;
+    margin-right: 0.5em;
+width: 5em;
+}
+.body-send button:hover{
+  cursor: pointer;
+}
+input{
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.mail-details{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 7.5em;
+    height: 300px;
+    width: 40em;
+    margin: 2em;
+    background-color: rgb(250, 248, 248);
+    border-radius: 20px;
+}
+.detalis-button{
+    display: flex;
+  flex-direction: row;
+  background-color: rgb(25, 24, 24);
+  height: 53px;
+  border-radius: 20px 20px 0px 0px;
+}
+
+
+.mail-details h1{
+    font-size: 1.7em;
+    margin-bottom: 0.5em;
+    background-color: rgb(25, 24, 24);
+    color: #f3f2f2;
+    padding: 0.3em;
+    width: 100%;
+    border-radius:20px 20px 0px 0px;
+}
+
+.mail-details p span{
+    margin-left: 1em;
+    color: rgb(127, 124, 124);
+    margin-top: 1em; 
+    margin-right: 0.5em;
+}
+.mail-details p{
+    margin-bottom: 1em;
+    margin-left: 1em;
+} 
+.mail-details button{
+    height: 2.5em;
+    width: 4em;
+    /* margin-top: 9.5em;
+    margin-left: 43em; */
+    border: none ;
+    background: rgb(49, 48, 48);
+    color: #f3f2f2;
+    border-radius: 10px;
+}
+.mail-details button:hover{
+    cursor: pointer;
+}
+
+/* .compose-details{
+    display: flex;
+
+} */
+input:focus{
+    outline: none;
+}

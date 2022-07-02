@@ -10,8 +10,10 @@ export default {
             <form class="inputs-send" @submit.prevent="save">
                 <input class="input-to" type="mail" v-model="mailToCompose.to" placeholder="To">
                 <input class="input-subject" type="text" v-model="mailToCompose.subject" placeholder="Subject">
-                <div class="body-send"> <input class="input-body" type="textarea" cols="50" rows="5" v-model="mailToCompose.body" placeholder="Body">
-                <button type="submit">Send</button></div>
+                <div class="body-send">  <textarea name="input-body" cols="40" rows="5" v-model="mailToCompose.body" placeholder="Body"></textarea>
+                <button type="submit">Send</button>
+               </div>
+                <!-- <input class="input-body" type="text" v-model="mailToCompose.body" placeholder="Body"> -->
 
                 <!-- <button>Close</button> -->
 

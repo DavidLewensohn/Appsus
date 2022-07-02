@@ -1,3 +1,17 @@
-/* body{
-    background-color: rgb(202, 0, 0);
-} */
+body{
+    background-color: rgb(252, 187, 97);
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    margin: 1em;
+    font-size: 1.3em;
+    
+}
+router-link a{
+    text-decoration: none;
+}
+
+footer{
+    padding: 1em;
+}

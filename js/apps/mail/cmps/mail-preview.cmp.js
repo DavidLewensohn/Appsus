@@ -4,7 +4,7 @@ export default {
         <!-- <section class="mail-preview"> -->
 
     <td>{{mail.subject}}</td>
-    <td>{{mail.body}}</td>
+    <td v-if:="sortMail(mail)">{{this.cut}}</td>
     <td>{{mail.sentAt}}</td>
     <td v-if:="mail.from">{{mail.from}}</td>
     <td v-if:="mail.to">{{mail.to}}</td>
@@ -15,12 +15,17 @@ export default {
     `,
     data() {
         return {
-           
+          cut: null
         }
     },
+   
     created() { },
     methods: {
-
+        sortMail(mail) {
+            this.cut=mail.body.substring(0, 10)+'...';
+            console.log(this.cut);
+            return true
+        },
 
     },
     computed: {}

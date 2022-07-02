@@ -10,7 +10,7 @@ export const noteEdit = {
     props: ['editedNote'],
     template: `
    <section v-if="editedNote":class="editModal">
-       <!-- <button @click="deleteNote">delete</button> -->
+   <!-- <button class="del-btn" @click="deleteNote">🗑️</button> -->
 
        <!-- <input type="text" v-if="type==='note-img'" 
             class="img-input" @input="imgUrl" v-model="url"> -->

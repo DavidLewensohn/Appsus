@@ -3,7 +3,7 @@ export const noteTodos = {
     props:['info'],
     template: `
     <section :style="info.style" class="txt-container">
-        <button @click="deleteNote">delete</button>
+        <button class="del-btn" @click="deleteNote">🗑️</button>
 
         
         <textarea v-model="text">{{text}}</textarea>
@@ -28,6 +28,7 @@ export const noteTodos = {
     },
     methods: {
         deleteNote() {
+            console.log('del');
             this.$emit('toDeleteNote')
         },
         saveEdit() {

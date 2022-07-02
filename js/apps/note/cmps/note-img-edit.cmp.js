@@ -2,7 +2,7 @@ export const noteImg = {
     props:['info'],
     template: `
     <section :style="info.style" >
-    <button @click="deleteNote">delete</button>
+    <button class="del-btn" @click="deleteNote">🗑️</button>
     <input type="text" class="img-input" @input="imgUrl" v-model="url">
         <textarea v-model="text">{{text}}</textarea>
         <img class="todoImg" :src="info.url"  alt="img">

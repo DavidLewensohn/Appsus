@@ -3,7 +3,7 @@ export const noteTxt = {
     template: `
     <section :style="info.style" class="txt-container">
 
-        <button @click="deleteNote">delete</button>
+        <button class="del-btn" @click="deleteNote">🗑️</button>
         <textarea v-model="text">{{text}}</textarea>
         <button class="save-button" @click="saveEdit" >✔</button>
         <button class="close-button" @click="closeEditNote" >✘</button>

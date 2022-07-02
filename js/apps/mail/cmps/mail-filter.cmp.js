@@ -1,14 +1,14 @@
 export default {
     template: `
         <section class="mail-filter">
-            <h1>Filter:</h1>
+            <h1 class="h">AppMail</h1>
             <label>
-            By Search:
-            <input @input="filter" type="text" v-model="filterBy.subject" placeholder="Search...">
-            By Unread:
-            <button v-on:click="filterRead()">Show Unread</button>
-            </label>
-        </section>
+            <input class="input-search" @input="filter" type="text" v-model="filterBy.subject" placeholder=" 🔎 Search mail...">
+        </label>
+        <label>
+        <button class="filter-button" v-on:click="filterRead()">Show unread mails</button>
+        </label>
+    </section>
     `,
     data() {
         return {

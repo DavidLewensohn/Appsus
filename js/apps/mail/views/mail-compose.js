@@ -4,17 +4,19 @@ export default {
  template: `
 
 <section class="mail-compose">
+   <div class="compose-close">
            <h1>Compose</h1>
-            <form @submit.prevent="save">
-                <input type="mail" v-model="mailToCompose.to" placeholder="To">
-                <input type="text" v-model="mailToCompose.subject" placeholder="Subject">
-                <input type="text" v-model="mailToCompose.body" placeholder="Body">
-                <button type="submit">Send</button>
+           <button @click="$emit('close')">Close</button></div>
+            <form class="inputs-send" @submit.prevent="save">
+                <input class="input-to" type="mail" v-model="mailToCompose.to" placeholder="To">
+                <input class="input-subject" type="text" v-model="mailToCompose.subject" placeholder="Subject">
+                <div class="body-send"> <input class="input-body" type="textarea" cols="50" rows="5" v-model="mailToCompose.body" placeholder="Body">
+                <button type="submit">Send</button></div>
 
                 <!-- <button>Close</button> -->
 
 </form>
-<button @click="$emit('close')">Close</button>
+
         </section>
 
 `,
